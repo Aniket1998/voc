@@ -440,6 +440,28 @@ class DictTests(TranspileTestCase):
             except TypeError as err:
                 print(err)
             """)
+    def test_items(self):
+        self.assertCodeExecution("""
+            x = {1 : 1,2 : 2,3 : 3}
+            x2 = {1 : 1,2 : 2,3 : 3,4 : 4}
+            y = x.items()
+            y2 = x2.items()
+            print(len(y))
+            print((1,1) in y)
+            print((1,2) not in y)
+            s1 = 0
+            s2 = 0
+            for i,j in y:
+                s1 += i
+                s2 += j
+            print(s1)
+            print(s2)
+            s = {(1,1),(1,2),(2,2),(2,3)}
+            print(len(y & s))
+            print(len(y | s))
+            print(len(y ^ s))
+            print(len(y - s))
+            """)
 
 
 class UnaryDictOperationTests(UnaryOperationTestCase, TranspileTestCase):
