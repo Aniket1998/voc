@@ -283,11 +283,12 @@ public class DictItems extends org.python.types.Object {
             __doc__ = "Return self^value."
     )
     public org.python.types.Set __xor__(org.python.Object other) {
+        java.util.Set<org.python.Object> tupleset = this.toTupleSet();
         java.util.Set<org.python.Object> s1 = this.fromIter(other);
         java.util.Set<org.python.Object> sym_dif = new java.util.HashSet<org.python.Object>(s1);
-        sym_dif.addAll(this.toTupleSet());
+        sym_dif.addAll(tupleset);
         java.util.Set<org.python.Object> tmp = new java.util.HashSet<org.python.Object>(s1);
-        tmp.retainAll(this.value);
+        tmp.retainAll(tupleset);
         sym_dif.removeAll(tmp);
         return new org.python.types.Set(sym_dif);
     }
