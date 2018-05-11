@@ -399,7 +399,7 @@ public class Dict extends org.python.types.Object {
     )
     public org.python.Object items() {
         // FIXME: This should return a dict_view object, not compose a new list.
-        org.python.types.List result = new org.python.types.List();
+        /* org.python.types.List result = new org.python.types.List();
         java.util.List<org.python.Object> item;
         org.python.types.Tuple tuple;
 
@@ -411,7 +411,8 @@ public class Dict extends org.python.types.Object {
             tuple = new org.python.types.Tuple(item);
             result.append(tuple);
         }
-        return result;
+        return result;*/
+        return new org.python.types.DictItems(this);
     }
 
     @org.python.Method(
